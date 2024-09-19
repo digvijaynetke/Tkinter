@@ -1,6 +1,6 @@
 import tkinter as tk
 from tkinter import messagebox
-
+import file1
 
 
 
@@ -8,7 +8,7 @@ def login():
     username = "digvijay"
     password = "12345"
     if entry_username.get() == username and entry_password.get() == password:    
-        messagebox.showinfo(title="Login sucess" , message="you have succssfully loged in ")
+        messagebox.showinfo(title="Login sucess" , message="you have succssfully loged in...")
         print("hello ,,welcome to network IDS")
     else:
         messagebox.showinfo(title="login failed" , message="Invalid credentials ")
@@ -47,6 +47,8 @@ entry_password.grid(row=2, column=2, padx=10)
 # Create and place the login button
 button1 = tk.Button(frame1, text="LOGIN", bg="pink", fg="white", font=('Arial', 18) , command= login)
 button1.grid(row=3, column=2, columnspan=2, pady=15)
+signupButton= tk.Button(frame1,text="sign up",bg="grey",fg="blue",command=file1.run_script)
+signupButton.grid(row=3,column=3)
 
 # Pack the frame
 frame1.pack(pady=20, padx=20)
