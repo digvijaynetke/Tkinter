@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Cat Chatbot</title>
+    <!-- Link to the CSS -->
+    <style>
+        /* Insert the CSS from the previous response here */
+        body {
+          background-color: #e0f7e9;
+          font-family: 'Comic Sans MS', cursive, sans-serif;
+          color: #3b7737;
+          margin: 0;
+          padding: 0;
+        }
+
+        #bp-chat-container {
+          border-radius: 10px;
+          background-color: #d1f0da;
+          box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+          border: 3px solid #a5d6a7;
+          padding: 15px;
+          max-width: 400px;
+          margin: 50px auto;
+        }
+
+        #bp-chat-header {
+          background-color: #a5d6a7;
+          border-radius: 10px 10px 0 0;
+          text-align: center;
+          padding: 10px;
+          font-size: 1.2rem;
+          font-weight: bold;
+          color: #ffffff;
+          position: relative;
+        }
+
+        #bp-chat-header::before {
+          content: "🐾";
+          font-size: 1.5rem;
+          position: absolute;
+          left: 10px;
+          top: 10px;
+        }
+
+        .bp-bot-message, .bp-user-message {
+          border-radius: 15px;
+          padding: 10px;
+          max-width: 80%;
+          margin: 10px 0;
+          font-size: 1rem;
+        }
+
+        .bp-bot-message {
+          background-color: #b9f6ca;
+          color: #004d40;
+        }
+
+        .bp-user-message {
+          background-color: #69f0ae;
+          color: #ffffff;
+          text-align: right;
+          margin-left: auto;
+        }
+
+        #bp-input-container {
+          border-top: 2px solid #a5d6a7;
+          padding: 10px;
+          background-color: #d1f0da;
+          display: flex;
+          justify-content: space-between;
+        }
+
+        #bp-input {
+          width: 85%;
+          padding: 10px;
+          border: 2px solid #a5d6a7;
+          border-radius: 20px;
+          font-size: 1rem;
+          background-color: #ffffff;
+          color: #004d40;
+        }
+
+        #bp-input::placeholder {
+          color: #004d40;
+        }
+
+        #bp-send-button {
+          background-color: #69f0ae;
+          border: none;
+          border-radius: 50%;
+          width: 40px;
+          height: 40px;
+          margin-left: 10px;
+          cursor: pointer;
+          color: #ffffff;
+          font-size: 1.5rem;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        #bp-send-button:hover {
+          background-color: #00c853;
+        }
+
+        #bp-send-button::before {
+          content: "🐱";
+        }
+    </style>
+</head>
+<body>
+
+    <div id="bp-chat-container">
+        <div id="bp-chat-header">
+            Cute Cat Chatbot
+        </div>
+
+        <div id="bp-chat-content">
+            <!-- Sample chat messages -->
+            <div class="bp-bot-message">Hello! I'm your cute cat bot! 😺</div>
+            <div class="bp-user-message">Hi! Tell me something cute! 😊</div>
+        </div>
+
+        <!-- Input area -->
+        <div id="bp-input-container">
+            <input type="text" id="bp-input" placeholder="Type a message...">
+            <button id="bp-send-button"></button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript for sending a message (dummy functionality)
+        const sendButton = document.getElementById('bp-send-button');
+        const inputField = document.getElementById('bp-input');
+        const chatContent = document.getElementById('bp-chat-content');
+
+        sendButton.addEventListener('click', function() {
+            const userMessage = inputField.value.trim();
+            if (userMessage) {
+                // Create a new user message div
+                const userMessageDiv = document.createElement('div');
+                userMessageDiv.className = 'bp-user-message';
+                userMessageDiv.innerText = userMessage;
+
+                // Append the message to the chat content
+                chatContent.appendChild(userMessageDiv);
+
+                // Clear the input field
+                inputField.value = '';
+
+                // Scroll to the bottom of the chat
+                chatContent.scrollTop = chatContent.scrollHeight;
+
+                // Bot reply (dummy message)
+                setTimeout(() => {
+                    const botReplyDiv = document.createElement('div');
+                    botReplyDiv.className = 'bp-bot-message';
+                    botReplyDiv.innerText = "Purr... That's cute! 😻";
+
+                    // Append bot reply
+                    chatContent.appendChild(botReplyDiv);
+                    chatContent.scrollTop = chatContent.scrollHeight;
+                }, 1000);
+            }
+        });
+    </script>
+</body>
+</html>

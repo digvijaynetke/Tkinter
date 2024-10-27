@@ -1,6 +1,11 @@
 import tkinter as tk
 from tkinter import ttk
-import file1
+import file1 
+
+
+
+def on_button_click():
+    file1.enter_data()
 
 window = tk.Tk()
 window.title("Data Entry Form")
@@ -91,7 +96,7 @@ term_frame.grid(row=2,column=0,sticky="news",padx=20,pady=20)
 terms_check = tk.Checkbutton(term_frame,text="I ACCEPT THE TERMS AND CONDITIONS!.",bg="grey")
 terms_check.grid(row = 0,column=0)
 
-# button = tk.Button(frame,text="Enter Data",bg="grey",command=file1.enter_data)
-# button.grid(row=3,column=0,sticky="n",padx=20,pady=20)
+button = tk.Button(frame,text="Enter Data",bg="grey",command=on_button_click)
+button.grid(row=3,column=0,sticky="n",padx=20,pady=20)
 
 window.mainloop()

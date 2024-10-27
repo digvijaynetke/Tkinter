@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cute Cat Chatbot with Button</title>
+
+    <style>
+        /* Basic page styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7e9;
+            color: #004d40;
+            text-align: center;
+            margin-top: 50px;
+        }
+
+        /* Style for the button */
+        #chat-toggle-button {
+            background-color: #69f0ae;
+            border: none;
+            border-radius: 20px;
+            padding: 15px 30px;
+            color: white;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+
+        #chat-toggle-button:hover {
+            background-color: #00c853;
+        }
+
+        /* Chat window size and position */
+        .botpress-webchat-container {
+            position: fixed;
+            bottom: 0;
+            right: 20px;
+            width: 350px; /* Width of the chat window */
+            height: 500px; /* Height of the chat window */
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+            border-radius: 10px;
+            display: none; /* Hidden initially */
+            z-index: 9999;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Welcome to the Cute Cat Chatbot!</h1>
+    <p>Click the button to open the chat!</p>
+
+    <!-- Button to toggle the chat -->
+    <button id="chat-toggle-button">Open Cat Chatbot 🐱</button>
+
+    <!-- Botpress Webchat will appear here -->
+    <div id="chat-container" class="botpress-webchat-container"></div>
+
+    <!-- Botpress Webchat Injection -->
+    <script src="https://cdn.botpress.cloud/webchat/v2.2/inject.js"></script>
+    <script src="https://files.bpcontent.cloud/2024/10/15/16/20241015165317-6TZDE922.js"></script>
+
+    <script>
+        // Initialize the webchat (make sure you use your config URL)
+        window.botpressWebChat.init({
+            hostUrl: "https://cdn.botpress.cloud/webchat/v2.2",
+            botId: "your-bot-id", // Set the bot ID here if needed
+            configUrl: "https://files.bpcontent.cloud/2024/10/15/16/20241015165318-42OUCEMI.json",
+            container: "#chat-container"
+        });
+
+        // Toggle chat functionality
+        const chatButton = document.getElementById('chat-toggle-button');
+        const chatContainer = document.getElementById('chat-container');
+        let chatOpen = false;
+
+        chatButton.addEventListener('click', function() {
+            chatOpen = !chatOpen;
+            if (chatOpen) {
+                chatContainer.style.display = 'block';
+                window.botpressWebChat.sendEvent({ type: 'show' }); // Show the chat
+            } else {
+                chatContainer.style.display = 'none';
+                window.botpressWebChat.sendEvent({ type: 'hide' }); // Hide the chat
+            }
+        });
+    </script>
+</body>
+</html>
